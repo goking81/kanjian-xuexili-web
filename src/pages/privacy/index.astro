@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+const title = "隐私说明｜看见学习力";
+const description = "看见学习力网站的隐私和数据使用说明，包括网站访问数据、第三方服务、小程序跳转和未成年人信息处理边界。";
+---
+<BaseLayout title={title} description={description}>
+  <PageHero eyebrow="隐私说明" title="这个网站会收集什么，以及不会收集什么" description="本页说明 dna.learnbox.cc 网站的访问数据处理方式。微信小程序内的测评数据处理规则，以小程序中的隐私保护指引为准。" />
+  <section class="section"><div class="wrap article-layout"><article class="prose"><h2>网站的用途</h2><p>本网站用于介绍看见学习力产品、展示报告样例并发布家长学习指南。你不需要在网站注册账号，也不需要在网站填写孩子姓名、年级或测评答案。</p><h2>基础访问数据</h2><p>为了解页面是否正常访问和哪些内容对用户有帮助，网站可能使用 Cloudflare 提供的安全、性能与匿名访问统计能力，处理访问时间、页面地址、设备类型和大致地区等基础技术信息。</p><h2>网站不会主动收集</h2><ul><li>孩子姓名、学校和班级。</li><li>家长手机号或微信号。</li><li>测评答案与报告结果。</li><li>支付信息和身份证件。</li></ul><h2>微信小程序</h2><p>当你根据页面提示打开微信并搜索“看见学习力”时，后续测评发生在微信小程序中。小程序的数据处理方式、保存期限和用户权利，以小程序内公开的隐私保护指引为准。</p><h2>未成年人保护</h2><p>本网站内容面向家长阅读。未成年人应在监护人知情和陪伴下使用小程序测评功能。</p><h2>更新与联系</h2><p>如网站功能或第三方服务发生变化，本说明会同步更新并标注内容。正式联系渠道将在主体登记和商业化准备完成后公布。</p></article><aside class="sidebar"><h2>相关页面</h2><a href="/about/">关于看见学习力</a><a href="/faq/">常见问题</a><a href="/how-it-works/">产品适用边界</a></aside></div></section>
+</BaseLayout>

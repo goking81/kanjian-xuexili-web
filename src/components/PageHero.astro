@@ -1,0 +1,11 @@
+---
+const { eyebrow, title, description, parentLabel = "首页", parentHref = "/" } = Astro.props;
+---
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumbs"><a href={parentHref}>{parentLabel}</a> / {eyebrow}</div>
+    <span class="eyebrow">{eyebrow}</span>
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+</section>

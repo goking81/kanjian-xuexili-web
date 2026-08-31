@@ -1,0 +1,15 @@
+---
+import type { Guide } from "../data/guides";
+const { guide } = Astro.props as { guide: Guide };
+---
+<section class="section">
+  <div class="wrap article-layout">
+    <article class="prose">
+      <p>{guide.intro}</p>
+      <div class="callout"><strong>先记住这一点</strong>{guide.keyPoint}</div>
+      {guide.sections.map((section) => <section id={section.heading.replace(/[：？，“”]/g, "-")}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}{section.bullets && <ul>{section.bullets.map((bullet) => <li>{bullet}</li>)}</ul>}</section>)}
+      <div class="callout"><strong>适用边界</strong>本文用于家庭学习观察和沟通参考，不替代医学、心理或教育诊断。孩子若持续出现明显情绪、睡眠、进食或社会功能变化，请及时寻求专业支持。</div>
+    </article>
+    <aside class="sidebar" aria-label="相关内容"><h2>继续阅读</h2><a href="/report/">学习力报告会提供什么</a><a href="/how-it-works/">六维学习力与测评流程</a><a href="/guides/parent-child-gap/">怎样理解亲子 GAP</a><a href="/faq/">常见问题与适用边界</a></aside>
+  </div>
+</section>

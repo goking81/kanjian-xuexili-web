@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ReportPreview from "../../components/ReportPreview.astro";
+import FinalCta from "../../components/FinalCta.astro";
+const title = "学习力测评报告样例｜六维图谱与亲子 GAP｜看见学习力";
+const description = "查看看见学习力报告样例，了解六维学习图谱、学习优势、行动卡点、亲子观察差异和家庭下一步支持建议。";
+const schema = { "@context": "https://schema.org", "@type": "WebPage", name: title, description, url: "https://dna.learnbox.cc/report/" };
+---
+<BaseLayout title={title} description={description} schema={schema}>
+  <PageHero eyebrow="报告样例" title="一份学习力报告，会把什么说清楚？" description="报告不预测成绩，也不给孩子贴固定标签。它把学习优势、行动卡点、亲子观察差异和下一步支持方向拆成家长容易阅读的独立结论。" />
+  <section class="section"><div class="wrap"><div class="report-layout"><ReportPreview /><div><div class="section-kicker">报告结构</div><h2>从“感觉很像”走到“知道怎么做”</h2><div class="benefit-list"><article class="benefit"><div class="benefit-number">01</div><div><h3>类型与关键词</h3><p>用一个容易记住的词概括孩子当前更突出的学习方式。</p></div></article><article class="benefit"><div class="benefit-number">02</div><div><h3>六维学习图谱</h3><p>同时查看驱动力、行动力、认知力、韧性、环境力和潜能力。</p></div></article><article class="benefit"><div class="benefit-number">03</div><div><h3>每条结论独立成卡</h3><p>熟悉的一面、容易忽略的一面和行动建议分别呈现。</p></div></article><article class="benefit"><div class="benefit-number">04</div><div><h3>亲子 GAP</h3><p>呈现家长观察和孩子自评之间值得继续讨论的差异。</p></div></article></div></div></div></div></section>
+  <section class="section section-soft"><div class="wrap"><div class="section-kicker">阅读方式</div><h2>不要一次解释所有分数，先选一条最有共鸣的结论</h2><div class="definition-grid"><article class="definition"><div class="definition-index">01</div><h3>请孩子确认</h3><p>先问“这条描述像你吗”，不要马上解释为什么。</p></article><article class="definition"><div class="definition-index">02</div><h3>寻找具体例子</h3><p>回忆最近一次顺利或卡住的学习经历，让讨论落到行为。</p></article><article class="definition"><div class="definition-index">03</div><h3>只改一个动作</h3><p>从今天可以执行的微小改变开始，不制定一整套宏大计划。</p></article></div></div></section>
+  <FinalCta title="报告不是终点，而是一次家庭对话的起点" />
+</BaseLayout>

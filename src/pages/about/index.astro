@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import FinalCta from "../../components/FinalCta.astro";
+const title = "关于看见学习力｜家庭学习观察工具";
+const description = "了解看见学习力的产品初衷、内容原则和适用边界。我们希望帮助家长用更具体、更少评判的语言理解孩子的学习行为。";
+---
+<BaseLayout title={title} description={description}>
+  <PageHero eyebrow="关于我们" title="帮助家庭先看见发生了什么，再讨论怎样改变" description="看见学习力从一个很具体的问题出发：当孩子拖延、分心或缺少动力时，家庭能不能少一点笼统判断，多一点可观察的细节？" />
+  <section class="section"><div class="wrap article-layout"><article class="prose"><h2>产品初衷</h2><p>很多学习冲突并不是因为家庭不关心孩子，而是双方使用了不同的语言。家长看到结果和行为，孩子感受到任务难度、压力和未被表达的努力。</p><p>看见学习力把家长观察与孩子表达放在一起，希望给家庭提供一套更具体的讨论起点。</p><h2>我们坚持的内容原则</h2><ul><li>不把单次测评结果当作孩子的固定能力。</li><li>不预测成绩、升学结果或未来发展。</li><li>不使用焦虑、羞耻或恐惧推动家长行动。</li><li>所有建议尽量落到家庭可以观察和尝试的小动作。</li></ul><h2>适用边界</h2><p>产品不是心理咨询、医学诊断或教育诊断。它更适合希望理解日常学习行为、沟通差异和支持方式的家庭。</p><div class="callout"><strong>需要专业支持的情况</strong>如果孩子持续出现明显的情绪低落、睡眠或进食改变、拒绝正常社交和学习，或者存在伤害自己与他人的风险，请及时联系当地正规医疗或心理专业机构。</div></article><aside class="sidebar"><h2>了解更多</h2><a href="/how-it-works/">产品与测评流程</a><a href="/report/">报告样例</a><a href="/privacy/">隐私说明</a><a href="/faq/">常见问题</a></aside></div></section>
+  <FinalCta />
+</BaseLayout>

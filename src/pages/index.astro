@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ReportPreview from "../components/ReportPreview.astro";
+import FinalCta from "../components/FinalCta.astro";
+
+const title = "青少年学习力测评｜看见孩子的学习方式与亲子差异｜看见学习力";
+const description = "看见学习力是一款面向家长和青少年的家庭学习观察工具。家长与孩子共同完成轻量测评，了解学习优势、行动卡点、亲子观察差异和下一步支持方向。";
+const schema = [
+  { "@context": "https://schema.org", "@type": "WebSite", name: "看见学习力", url: "https://dna.learnbox.cc/", description },
+  { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "看见学习力", applicationCategory: "EducationalApplication", operatingSystem: "微信小程序", description, offers: { "@type": "Offer", price: "0", priceCurrency: "CNY" } },
+  { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [
+    { "@type": "Question", name: "看见学习力是什么产品？", acceptedAnswer: { "@type": "Answer", text: "看见学习力是一款面向家长和青少年的家庭学习观察工具。家长与孩子分别完成轻量问卷，再从六个维度理解学习方式、亲子观察差异和下一步支持方向。" } },
+    { "@type": "Question", name: "这是一项心理或医学诊断吗？", acceptedAnswer: { "@type": "Answer", text: "不是。结果用于家庭学习观察和沟通参考，不代替医学、心理或教育诊断。" } },
+    { "@type": "Question", name: "谁适合使用看见学习力？", acceptedAnswer: { "@type": "Answer", text: "适合希望了解孩子学习方式、行动卡点、优势表现和亲子观察差异的家庭，尤其适合小学高年级至初中阶段的家长和孩子共同完成。" } }
+  ] }
+];
+---
+<BaseLayout title={title} description={description} schema={schema}>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <span class="hero-eyebrow">面向家长与青少年的家庭学习观察工具</span>
+      <h1 id="hero-title">青少年学习力测评：看见孩子怎么学，找到更合适的支持方式</h1>
+      <p class="hero-lead">家长先观察，孩子再表达。通过一份轻量测评，了解孩子的学习优势、行动卡点、亲子观察差异，以及家庭下一步可以怎样支持。</p>
+      <div class="hero-actions"><button class="button button-primary js-open-mini" type="button">免费开始学习力测评</button><a class="button button-outline" href="/report/">先看报告样例</a></div>
+      <div class="hero-note">不需要注册 · 不采集手机号 · 结果仅作家庭学习观察参考</div>
+    </div>
+    <div class="hero-proof"><div class="wrap proof-inner"><div class="proof-item"><div><strong>家长 20 题</strong><span>从日常行为开始观察</span></div></div><div class="proof-item"><div><strong>孩子 40 题</strong><span>表达自己的真实感受</span></div></div><div class="proof-item"><div><strong>六维学习图谱</strong><span>不只看成绩结果</span></div></div><div class="proof-item"><div><strong>亲子 GAP</strong><span>看见双方理解差异</span></div></div></div></div>
+  </section>
+
+  <section class="section" id="product"><div class="wrap"><div class="section-kicker">产品说明</div><h2>这是什么、谁来用、完成后能得到什么</h2><p class="section-intro">“学习力”不是一个简单分数。我们把家长观察和孩子自评放在一起，帮助家庭讨论具体的学习行为，而不是急着给孩子贴上“懒”“不自律”或“没动力”的标签。</p><div class="definition-grid"><article class="definition"><div class="definition-index">01 / 产品</div><h3>家庭学习观察工具</h3><p>围绕驱动力、行动力、认知力、韧性、环境力和潜能力形成学习画像。</p></article><article class="definition"><div class="definition-index">02 / 用户</div><h3>想更懂孩子的家长</h3><p>适合关注学习习惯、作业拖延、学习动力和亲子沟通的家庭，孩子也需要参与表达。</p></article><article class="definition"><div class="definition-index">03 / 收益</div><h3>从判断转向具体行动</h3><p>看见孩子擅长怎样学、容易卡在哪一步，以及今天可以先尝试的一个小改变。</p></article></div></div></section>
+
+  <section class="section section-soft" id="situations"><div class="wrap"><div class="section-kicker">家长常见困惑</div><h2>这些看起来像“态度问题”的表现，背后可能是不同的学习卡点</h2><p class="section-intro">先从家长正在搜索的问题进入，再用具体观察帮助家庭找到下一步。</p><div class="problem-grid"><a class="problem-link" href="/guides/homework-procrastination/"><span>学习习惯</span><h3>孩子写作业总是拖延怎么办？</h3><p>先分清是不会做、难开始，还是任务太大不知道从哪里下手。</p></a><a class="problem-link" href="/guides/learning-motivation/"><span>学习动力</span><h3>孩子学习动力不足，只能靠催吗？</h3><p>兴趣、目标感、成功体验和外部压力，可能正在产生不同影响。</p></a><a class="problem-link" href="/guides/parent-child-gap/"><span>亲子沟通</span><h3>家长眼里的孩子，为什么和孩子自己不一样？</h3><p>同一个行为，家长看到的是磨蹭，孩子感受到的可能是无从开始。</p></a><a class="problem-link" href="/how-it-works/"><span>学习方法</span><h3>学习力的六个维度分别在看什么？</h3><p>环境、任务结构和恢复方式，也会影响孩子能不能展示真实能力。</p></a></div></div></section>
+
+  <section class="section" id="report"><div class="wrap"><div class="section-kicker">报告样例</div><h2>报告不是给孩子打分，而是把“他为什么这样学”说得更具体</h2><div class="report-layout"><ReportPreview /><div><div class="section-kicker">完成后，家长能得到</div><div class="benefit-list"><article class="benefit"><div class="benefit-number">01</div><div><h3>学习优势画像</h3><p>知道孩子在哪类任务里更容易主动、理解和进入状态。</p></div></article><article class="benefit"><div class="benefit-number">02</div><div><h3>行动卡点解释</h3><p>区分“不会做”“不愿做”和“不知道怎么开始”，减少无效催促。</p></div></article><article class="benefit"><div class="benefit-number">03</div><div><h3>亲子观察差异</h3><p>看到家长观察与孩子自我感受之间不一致的地方。</p></div></article><article class="benefit"><div class="benefit-number">04</div><div><h3>下一步支持建议</h3><p>把结论落到家庭可以尝试的小动作，不停留在抽象标签里。</p></div></article></div><a class="button button-dark" href="/report/">查看完整报告说明</a></div></div></div></section>
+
+  <section class="section section-dark" id="method"><div class="wrap"><div class="section-kicker">测评流程</div><h2>家长和孩子分别回答，再一起看见差异</h2><p class="section-intro">家长先基于日常相处进行观察，孩子再根据自己的真实感受完成选择。</p><div class="steps"><article class="step"><h3>填写孩子信息</h3><p>填写昵称和年级即可，用于生成更自然的报告文案。</p></article><article class="step"><h3>家长先答，孩子再答</h3><p>家长 20 题、孩子 40 题，每页一题，支持中途退出后继续。</p></article><article class="step"><h3>查看学习力报告</h3><p>阅读六维图谱、学习画像、亲子 GAP 和下一步支持方向。</p></article></div></div></section>
+
+  <section class="section"><div class="wrap"><div class="section-kicker">使用场景</div><h2>比“你为什么又拖延”更重要的，是一起找到卡住的那一步</h2><div class="scene-layout"><img class="scene-image" src="/images/family-report.png" alt="家长和孩子一起查看学习力报告并讨论学习方式" width="1536" height="1024" loading="lazy" /><div class="scene-copy"><h3>报告应该成为一次更轻松的家庭对话</h3><p>家长不需要立刻评价结果，也不用把每个分数当成结论。更有价值的做法，是从一条具体描述出发，问问孩子最近有没有类似经历。</p><div class="scene-point"><b>先确认</b><span>“这条描述像你吗？最近有没有一次具体的例子？”</span></div><div class="scene-point"><b>再理解</b><span>“你觉得最难的是开始、理解，还是坚持到最后？”</span></div><div class="scene-point"><b>最后行动</b><span>“我们今天只改一个地方，你希望先从哪一步开始？”</span></div></div></div></div></section>
+
+  <section class="section section-soft" id="articles"><div class="wrap"><div class="section-kicker">家长学习指南</div><h2>围绕真实问题持续更新，而不是一次性堆满关键词</h2><p class="section-intro">每个主题都有独立页面、清晰标题和相关内容链接，让家长、百度和 AI 搜索都能继续找到更具体的答案。</p><div class="content-grid"><article class="article-card"><small>作业拖延</small><h3>孩子写作业总是拖延，先观察这 3 个信号</h3><p>从启动困难、任务理解和害怕出错三个角度，找到更具体的支持方法。</p><a class="article-link" href="/guides/homework-procrastination/">阅读家长指南 →</a></article><article class="article-card"><small>学习动力</small><h3>孩子对什么都提不起兴趣，家长可以先问什么？</h3><p>避免把“没动力”当成一个笼统结论，先找到孩子愿意投入的条件。</p><a class="article-link" href="/guides/learning-motivation/">查看主题页 →</a></article><article class="article-card"><small>亲子 GAP</small><h3>家长眼里的孩子，为什么和孩子自己不一样？</h3><p>解释亲子观察差异是什么，以及怎样把差异变成一次不带评判的对话。</p><a class="article-link" href="/guides/parent-child-gap/">查看主题页 →</a></article></div></div></section>
+
+  <section class="section" id="faq"><div class="wrap"><div class="section-kicker">常见问题</div><h2>关于青少年学习力测评，家长最常问的问题</h2><div class="faq-layout"><p class="faq-note">结果用于家庭学习观察和沟通参考，不替代医学、心理或教育诊断，也不用于给孩子贴固定标签。</p><div><details open><summary>看见学习力是什么产品？</summary><p>面向家长和青少年的家庭学习观察工具。家长与孩子分别完成轻量问卷，再从六个维度理解学习方式、亲子观察差异和下一步支持方向。</p></details><details><summary>这是一项心理或医学诊断吗？</summary><p>不是。结果用于家庭学习观察和沟通参考，不代替医学、心理或教育诊断。</p></details><details><summary>谁适合使用看见学习力？</summary><p>适合希望了解孩子学习方式、行动卡点、优势表现和亲子观察差异的家庭。</p></details><details><summary>完成测评需要多长时间？</summary><p>家长完成 20 题，孩子完成 40 题。具体时间取决于阅读和思考速度。</p></details></div></div></div></section>
+  <FinalCta />
+</BaseLayout>

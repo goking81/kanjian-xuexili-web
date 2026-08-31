@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import FinalCta from "../../components/FinalCta.astro";
+import { guides } from "../../data/guides";
+const title = "家长学习指南｜作业拖延、学习动力与亲子沟通｜看见学习力";
+const description = "围绕作业拖延、学习动力、学习方法和亲子观察差异，为家长提供具体、可执行且不过度评判的家庭学习支持建议。";
+---
+<BaseLayout title={title} description={description}>
+  <PageHero eyebrow="家长学习指南" title="先把问题说具体，再决定怎样支持孩子" description="这里不提供一句话育儿答案。每篇内容从真实家庭场景出发，帮助家长区分行为背后的不同原因，并选择一个可以尝试的小动作。" />
+  <section class="section section-soft"><div class="wrap"><div class="section-kicker">主题文章</div><h2>从家长正在经历的问题开始</h2><div class="content-grid">{guides.map((guide) => <article class="article-card"><small>{guide.category}</small><h3>{guide.title}</h3><p>{guide.description}</p><a class="article-link" href={`/guides/${guide.slug}/`}>阅读完整文章 →</a></article>)}</div></div></section>
+  <section class="section"><div class="wrap"><div class="section-kicker">内容原则</div><h2>少一点判断，多一点可以观察的细节</h2><div class="definition-grid"><article class="definition"><div class="definition-index">01</div><h3>不制造焦虑</h3><p>不使用“再不改就晚了”等恐吓式表达，也不承诺快速逆转。</p></article><article class="definition"><div class="definition-index">02</div><h3>不给固定标签</h3><p>所有结论都需要回到具体场景，由家长和孩子共同确认。</p></article><article class="definition"><div class="definition-index">03</div><h3>建议可以执行</h3><p>每篇文章都提供家庭当天可以尝试的一个小动作。</p></article></div></div></section>
+  <FinalCta />
+</BaseLayout>

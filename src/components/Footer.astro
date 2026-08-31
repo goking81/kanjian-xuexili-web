@@ -1,0 +1,14 @@
+---
+import { siteConfig } from "../config";
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-main"><div class="footer-brand">{siteConfig.name}</div><div class="footer-about">{siteConfig.description}</div></div>
+      <div class="footer-col"><strong>了解产品</strong><a href="/how-it-works/">产品介绍</a><a href="/report/">报告样例</a><a href="/how-it-works/#process">测评流程</a></div>
+      <div class="footer-col"><strong>家长内容</strong><a href="/guides/">家长指南</a><a href="/guides/parent-child-gap/">亲子 GAP</a><a href="/faq/">常见问题</a></div>
+      <div class="footer-col"><strong>站点信息</strong><a href="/about/">关于我们</a><a href="/privacy/">隐私说明</a><a href="/sitemap-index.xml">网站地图</a></div>
+    </div>
+    <div class="footer-bottom">{siteConfig.name}｜学习观察结果不构成医学、心理或教育诊断｜<a href={siteConfig.icpUrl} rel="nofollow">备案号：{siteConfig.icpNumber}</a></div>
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import FinalCta from "../../components/FinalCta.astro";
+const title = "青少年学习力测评常见问题｜看见学习力";
+const description = "解答看见学习力是什么、适合谁、如何完成、是否属于心理测评、报告如何使用以及个人信息如何处理等常见问题。";
+const faqs = [
+  ["看见学习力是什么产品？", "看见学习力是一款面向家长和青少年的家庭学习观察工具。家长与孩子分别完成轻量问卷，再从六个维度理解学习方式、亲子观察差异和下一步支持方向。"],
+  ["这是一项心理或医学诊断吗？", "不是。结果用于家庭学习观察和沟通参考，不代替医学、心理或教育诊断，也不用于给孩子贴固定标签。"],
+  ["谁适合使用？", "适合希望了解孩子学习方式、行动卡点、优势表现和亲子观察差异的家庭，尤其适合小学高年级至初中阶段的家长和孩子共同完成。"],
+  ["为什么家长和孩子都要答题？", "家长看到孩子外在的日常行为，孩子感受到任务难度、压力和未表达的努力。两个视角分别作答，才能呈现值得继续讨论的亲子观察差异。"],
+  ["完成测评需要多长时间？", "家长完成 20 题，孩子完成 40 题。具体时间取决于阅读和思考速度，中途退出后可以继续作答。"],
+  ["报告会预测学习成绩吗？", "不会。报告关注学习行为和支持方式，不预测分数、升学结果，也不作固定能力定论。"],
+  ["测评结果应该怎样和孩子讨论？", "先选择一条最有共鸣的描述，请孩子确认是否符合自己的体验，再一起寻找具体例子。不要试图一次解释全部分数。"],
+  ["网站会收集孩子的信息吗？", "这个网站只提供产品说明和家长内容，不要求填写孩子信息。正式测评在微信小程序内完成，数据处理规则以小程序隐私说明为准。"]
+];
+const schema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) };
+---
+<BaseLayout title={title} description={description} schema={schema}>
+  <PageHero eyebrow="常见问题" title="关于青少年学习力测评，家长最常问的问题" description="先了解产品边界、完成方式和报告使用方法，再决定它是否适合你的家庭。" />
+  <section class="section"><div class="wrap faq-layout"><p class="faq-note">看见学习力用于家庭学习观察和沟通参考，不替代医学、心理或教育诊断。若孩子持续出现明显情绪或社会功能变化，请及时寻求专业支持。</p><div>{faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
+  <FinalCta />
+</BaseLayout>

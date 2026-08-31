@@ -1,0 +1,18 @@
+---
+const { currentPath = "/" } = Astro.props;
+const links = [
+  { href: "/how-it-works/", label: "产品介绍" },
+  { href: "/report/", label: "报告样例" },
+  { href: "/guides/", label: "家长指南" },
+  { href: "/faq/", label: "常见问题" }
+];
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="看见学习力首页"><span class="brand-mark">学</span><span>看见学习力</span></a>
+    <nav class="nav" aria-label="主导航">
+      {links.map((link) => <a href={link.href} aria-current={currentPath.startsWith(link.href) ? "page" : undefined}>{link.label}</a>)}
+      <button class="header-cta js-open-mini" type="button">免费测评</button>
+    </nav>
+  </div>
+</header>

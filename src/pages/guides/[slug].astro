@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import GuideArticle from "../../components/GuideArticle.astro";
+import FinalCta from "../../components/FinalCta.astro";
+import { guides, type Guide } from "../../data/guides";
+
+export function getStaticPaths() {
+  return guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+
+const { guide } = Astro.props as { guide: Guide };
+const title = `${guide.title}｜看见学习力`;
+const schema = [
+  { "@context": "https://schema.org", "@type": "Article", headline: guide.title, description: guide.description, inLanguage: "zh-CN", author: { "@type": "Organization", name: "看见学习力" }, publisher: { "@type": "Organization", name: "看见学习力" }, mainEntityOfPage: `https://dna.learnbox.cc/guides/${guide.slug}/` },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "首页", item: "https://dna.learnbox.cc/" },
+    { "@type": "ListItem", position: 2, name: "家长学习指南", item: "https://dna.learnbox.cc/guides/" },
+    { "@type": "ListItem", position: 3, name: guide.title, item: `https://dna.learnbox.cc/guides/${guide.slug}/` }
+  ] }
+];
+---
+<BaseLayout title={title} description={guide.description} canonicalPath={`/guides/${guide.slug}/`} schema={schema}>
+  <PageHero eyebrow={guide.category} title={guide.title} description={guide.description} parentLabel="家长学习指南" parentHref="/guides/" />
+  <GuideArticle guide={guide} />
+  <FinalCta title="想更系统地看见孩子的学习方式？" />
+</BaseLayout>

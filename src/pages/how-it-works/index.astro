@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import FinalCta from "../../components/FinalCta.astro";
+const title = "学习力测评怎么做？六维学习力与测评流程｜看见学习力";
+const description = "了解看见学习力的家长题、孩子题、六维学习图谱和亲子 GAP 计算逻辑，以及家庭完成测评的完整流程。";
+const dimensions = [
+  ["驱动力", "愿不愿意投入，能否从兴趣、目标和成功体验中获得继续学习的力量。"],
+  ["行动力", "能否开始任务、保持节奏，并把计划转化成可以完成的动作。"],
+  ["认知力", "怎样理解、拆解、组织和使用信息，找到适合自己的学习方法。"],
+  ["韧性", "遇到错误、挫折或结果不理想时，能否调整并重新进入状态。"],
+  ["环境力", "空间、时间、关系和反馈方式，如何影响孩子的学习表现。"],
+  ["潜能力", "尚未稳定表现、但可能通过经验和方法迁移到新任务中的能力。"]
+];
+---
+<BaseLayout title={title} description={description}>
+  <PageHero eyebrow="产品与流程" title="家长观察和孩子表达，为什么要分开完成？" description="家长看到孩子外在的学习行为，孩子感受到任务难度和内心压力。两个视角分别作答，再放到一起，才能看见值得讨论的差异。" />
+  <section class="section"><div class="wrap"><div class="section-kicker">六维学习力</div><h2>不是给能力排高低，而是理解不同环节怎样共同作用</h2><div class="card-grid">{dimensions.map(([name, text], index) => <article class="card"><small>维度 0{index + 1}</small><h3>{name}</h3><p>{text}</p></article>)}</div></div></section>
+  <section class="section section-dark" id="process"><div class="wrap"><div class="section-kicker">完整流程</div><h2>三步完成，全程都有明确的换人提示</h2><div class="steps"><article class="step"><h3>填写孩子信息</h3><p>昵称和年级即可，不需要创建账号或填写手机号。</p></article><article class="step"><h3>家长先答，孩子再答</h3><p>家长 20 题完成后会出现明显换人页，再由孩子回答 40 题。</p></article><article class="step"><h3>共同查看报告</h3><p>阅读六维图谱、学习画像、亲子 GAP 和下一步支持建议。</p></article></div></div></section>
+  <section class="section"><div class="wrap"><div class="section-kicker">结果边界</div><h2>学习观察不等于心理测评或医学诊断</h2><p class="section-intro">看见学习力关注家庭可观察的学习行为和沟通方式，不诊断疾病，不预测成绩或升学结果，也不用于确定孩子的固定能力水平。</p><div class="definition-grid"><article class="definition"><div class="definition-index">不会</div><h3>不给孩子贴标签</h3><p>类型名称用于帮助记忆和讨论，不代表孩子只能以某一种方式学习。</p></article><article class="definition"><div class="definition-index">不会</div><h3>不预测成绩</h3><p>学习表现受到知识基础、任务、环境和状态等多种因素影响。</p></article><article class="definition"><div class="definition-index">可以</div><h3>帮助家庭观察</h3><p>用具体语言讨论孩子怎样开始、哪里卡住、什么支持更有帮助。</p></article></div></div></section>
+  <FinalCta />
+</BaseLayout>

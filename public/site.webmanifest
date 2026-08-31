@@ -1,0 +1,10 @@
+{
+  "name": "看见学习力",
+  "short_name": "看见学习力",
+  "description": "面向家长和青少年的家庭学习观察工具",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d1728"
+}
