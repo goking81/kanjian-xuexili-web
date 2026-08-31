@@ -4,9 +4,10 @@ import { siteConfig } from "../config";
 <dialog class="mini-dialog" id="mini-program-dialog" aria-labelledby="mini-program-title">
   <div class="dialog-inner">
     <h2 id="mini-program-title">在微信中开始测评</h2>
-    <p>打开微信，在顶部搜索框输入下面的小程序名称，即可进入正式测评。</p>
+    <p>使用微信扫一扫识别小程序码，即可进入正式测评。</p>
+    <img class="mini-program-code" src="/images/wechat-mini-program-code.png" alt="看见学习力微信小程序码" width="1086" height="400" />
     <div class="wechat-name">{siteConfig.miniProgramName}</div>
-    <p>网站不会要求你在浏览器中填写孩子信息。测评和报告均在微信小程序内完成。</p>
+    <p>也可以打开微信，在顶部搜索框输入小程序名称。网站不会要求你在浏览器中填写孩子信息。</p>
     <div class="dialog-actions"><button class="button button-outline js-copy-name" type="button" data-name={siteConfig.miniProgramName}>复制名称</button><button class="button button-dark js-close-mini" type="button">关闭</button></div>
   </div>
 </dialog>
