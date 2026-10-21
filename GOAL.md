@@ -24,7 +24,9 @@
 - 原锁文件的 25 条安全告警通过兼容范围内的间接依赖修补解决；`pnpm audit --prod` 与 `pnpm audit` 均无已知告警。Astro / sitemap 主版本及直接依赖版本未改变。
 - 正式站 10 个内容页面、2 张主要图片、sitemap 和 robots 共 14 个 HTTP 检查均返回 200。
 - 本地预览 http://127.0.0.1:4321 已启动；报告页 HTTP 200，包含 29.90 元和网站不收款说明。
-- 已进行完整 diff 的第二遍只读自审，未发现新增阻断问题。待 GitHub 上传与 PR 创建。
+- 已进行完整 diff 的第二遍只读自审，未发现新增阻断问题。
+- 代码已上传 `fix/sync-miniprogram-report-offer-20261021`，草稿 PR：[#1](https://github.com/goking81/kanjian-xuexili-web/pull/1)。未合并 main，正式站未发布本次更新。
+- Cloudflare Pages 已为候选分支触发检查；构建/预览状态以 PR 最新检查为准，不把本地通过当作云端部署成功。
 - 内置浏览器两次建页/读取超时；HTTP 访问正常。浏览器验收尚未完成。
 - Chrome 读取也超时；桌面/手机布局、真实剪贴板、小程序码扫码不算已验收，合并上线前仍需完成。
 - 不重复付款，不更改用户自行处理的小程序隐私指引，不把历史 Android 支付证据视为 iOS 实付验收。
