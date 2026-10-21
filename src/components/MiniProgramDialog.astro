@@ -8,15 +8,27 @@ import { siteConfig } from "../config";
     <img class="mini-program-code" src="/images/wechat-mini-program-code.png" alt="看见学习力微信小程序码" width="1086" height="400" />
     <div class="wechat-name">{siteConfig.miniProgramName}</div>
     <p>也可以打开微信，在顶部搜索框输入小程序名称。网站不会要求你在浏览器中填写孩子信息。</p>
+    <p>测评与基础报告免费，完整报告按需单次购买 {siteConfig.fullReportPrice} 元；在小程序内购买和阅读，网站不收款。</p>
+    <p class="copy-status" role="status" aria-live="polite"></p>
     <div class="dialog-actions"><button class="button button-outline js-copy-name" type="button" data-name={siteConfig.miniProgramName}>复制名称</button><button class="button button-dark js-close-mini" type="button">关闭</button></div>
   </div>
 </dialog>
 <script>
-  const dialog = document.querySelector<HTMLDialogElement>("#mini-program-dialog");
-  document.querySelectorAll<HTMLButtonElement>(".js-open-mini").forEach((button) => button.addEventListener("click", () => dialog?.showModal()));
-  document.querySelectorAll<HTMLButtonElement>(".js-close-mini").forEach((button) => button.addEventListener("click", () => dialog?.close()));
-  document.querySelectorAll<HTMLButtonElement>(".js-copy-name").forEach((button) => button.addEventListener("click", async () => {
-    await navigator.clipboard.writeText(button.dataset.name || "看见学习力");
-    button.textContent = "已复制";
-  }));
+  const dialog = document.querySelector("#mini-program-dialog");
+  if (dialog instanceof HTMLDialogElement) {
+    document.querySelectorAll(".js-open-mini").forEach((button) => button.addEventListener("click", () => dialog.showModal()));
+    document.querySelectorAll(".js-close-mini").forEach((button) => button.addEventListener("click", () => dialog.close()));
+    document.querySelectorAll(".js-copy-name").forEach((button) => button.addEventListener("click", async () => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const status = dialog.querySelector(".copy-status");
+      try {
+        await navigator.clipboard.writeText(button.dataset.name || "看见学习力");
+        button.textContent = "已复制";
+        if (status) status.textContent = "名称已复制，可到微信中搜索。";
+      } catch {
+        button.textContent = "复制名称";
+        if (status) status.textContent = "未能复制，请在微信中搜索“看见学习力”。";
+      }
+    }));
+  }
 </script>

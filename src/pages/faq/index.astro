@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import FinalCta from "../../components/FinalCta.astro";
+import { siteConfig } from "../../config";
 const title = "青少年学习力测评常见问题｜看见学习力";
 const description = "解答看见学习力是什么、适合谁、如何完成、是否属于心理测评、报告如何使用以及个人信息如何处理等常见问题。";
 const faqs = [
@@ -12,12 +13,17 @@ const faqs = [
   ["完成测评需要多长时间？", "家长完成 20 题，孩子完成 40 题。具体时间取决于阅读和思考速度，中途退出后可以继续作答。"],
   ["报告会预测学习成绩吗？", "不会。报告关注学习行为和支持方式，不预测分数、升学结果，也不作固定能力定论。"],
   ["测评结果应该怎样和孩子讨论？", "先选择一条最有共鸣的描述，请孩子确认是否符合自己的体验，再一起寻找具体例子。不要试图一次解释全部分数。"],
-  ["网站会收集孩子的信息吗？", "这个网站只提供产品说明和家长内容，不要求填写孩子信息。正式测评在微信小程序内完成，数据处理规则以小程序隐私说明为准。"]
+  ["网站会收集孩子的信息吗？", "这个网站只提供产品说明和家长内容，不要求填写孩子信息。正式测评在微信小程序内完成，数据处理规则以小程序隐私说明为准。"],
+  ["测评和完整报告分别怎么收费？", `测评与基础报告免费。本次测评的一份完整报告按需单次购买，Android 和 iOS 均为 ${siteConfig.fullReportPrice} 元，不自动续费。购买与阅读均在微信小程序中完成，网站不收款；不包含 PDF、人工解读或会员订阅。`],
+  ["为什么有些旧报告不能购买？", "缺少有效亲子逐题配对数据的旧报告暂不支持购买，免费报告仍可查看，可重新完成测评。有有效配对但差异为零或不足三组的报告不因此被禁止购买，内容如实展示，不编造、不补足。"],
+  ["购买后可以重复查看吗？", "在服务持续提供且本次购买权益有效期间，可在原微信账号内重复查看，不设自动到期，不承诺永久查看。购买对应本次测评，后续重新测评不自动包含在内；退款后不再享有该份完整报告的购买权益。"],
+  ["已付款但未解锁，去哪里查看订单？", "请先在小程序报告页点击“确认购买结果”，到“我的订单”核对，请勿重复付款。仍无法查看时，通过小程序展示的售后联系方式联系开发者，并提供订单信息；不要在公开页面发布订单或孩子信息。"],
+  ["退款和售后如何处理？", "技术问题先修复，确认无法交付时全额退款；误购或正常查看后的其他申请人工核对，不设置自助无条件退款。苹果 IAP 付款的退款需向 App Store 申请，由 Apple 审核决定；其他渠道联系小程序内展示的开发者售后。退款后的自动再次购买首版暂不开放，请联系客服核对。"]
 ];
 const schema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) };
 ---
 <BaseLayout title={title} description={description} schema={schema}>
   <PageHero eyebrow="常见问题" title="关于青少年学习力测评，家长最常问的问题" description="先了解产品边界、完成方式和报告使用方法，再决定它是否适合你的家庭。" />
-  <section class="section"><div class="wrap faq-layout"><p class="faq-note">看见学习力用于家庭学习观察和沟通参考，不替代医学、心理或教育诊断。若孩子持续出现明显情绪或社会功能变化，请及时寻求专业支持。</p><div>{faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
+  <section class="section" id="purchase-support"><div class="wrap faq-layout"><p class="faq-note">看见学习力用于家庭学习观察和沟通参考，不替代医学、心理或教育诊断。若孩子持续出现明显情绪或社会功能变化，请及时寻求专业支持。</p><div>{faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
   <FinalCta />
 </BaseLayout>
