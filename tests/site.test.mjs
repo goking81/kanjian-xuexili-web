@@ -7,6 +7,15 @@ import vm from "node:vm";
 const root = new URL("../", import.meta.url);
 const read = (file) => readFile(new URL(file, root), "utf8");
 
+test("README 准确描述产品分工、费用、流程且本地链接可用", async () => {
+  const markdown = await read("README.md");
+  for (const text of ["本仓库不包含小程序源码或支付后端", "20 题", "40 题", "29.90", "不设自动到期", "不承诺永久查看", "理解力", "抗挫力"]) assert.ok(markdown.includes(text));
+  assert.doesNotMatch(markdown, /阅读时长、专注片段、提问质量|content\/\s+文章与内容/);
+  for (const [, target] of markdown.matchAll(/!?\[[^\]]*\]\(([^)]+)\)/g)) {
+    if (!target.startsWith("https://")) await access(new URL(target, root));
+  }
+});
+
 test("首页、报告页与搜索结构化数据区分免费和单次付费报告", async () => {
   const home = await read("dist/index.html");
   const schemas = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
@@ -19,6 +28,7 @@ test("首页、报告页与搜索结构化数据区分免费和单次付费报�
     }
     assert.ok(html.includes("驱动力、行动力、理解力、抗挫力、环境力和潜能力"));
     assert.doesNotMatch(html, /认知力|>韧性</);
+    assert.match(html, /<a class="card-link" href="\/faq\/#purchase-support">查看订单与售后说明<\/a>/);
   }
   const process = await read("dist/how-it-works/index.html");
   for (const name of ["驱动力", "行动力", "理解力", "抗挫力", "环境力", "潜能力"]) assert.ok(process.includes(name));
