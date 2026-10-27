@@ -18,6 +18,8 @@ test("README 准确描述产品分工、费用、流程且本地链接可用", a
 
 test("首页、报告页与搜索结构化数据区分免费和单次付费报告", async () => {
   const home = await read("dist/index.html");
+  assert.doesNotMatch(home, /class="hero-note"/);
+  assert.doesNotMatch(home, /测评与基础报告免费 · 完整报告按需购买/);
   const schemas = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   const app = schemas.find((schema) => schema["@type"] === "SoftwareApplication");
   assert.deepEqual(app.offers.map(({ price }) => price), ["0", "29.90"]);
