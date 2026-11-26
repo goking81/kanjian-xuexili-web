@@ -23,7 +23,7 @@ test("首页、报告页与搜索结构化数据区分免费和单次付费报�
   const schemas = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   const app = schemas.find((schema) => schema["@type"] === "SoftwareApplication");
   assert.deepEqual(app.offers.map(({ price }) => price), ["0", "29.90"]);
-  for (const file of ["dist/index.html", "dist/report/index.html"]) {
+  for (const file of ["dist/report/index.html"]) {
     const html = await read(file);
     for (const text of ["29.90", "Android", "iOS", "网站不收款", "不自动续费", "不设自动到期", "不承诺永久查看", "不包含 PDF", "不编造、不补足", "我的订单"]) {
       assert.ok(html.includes(text), `${file} 缺少 ${text}`);
@@ -36,6 +36,24 @@ test("首页、报告页与搜索结构化数据区分免费和单次付费报�
   for (const name of ["驱动力", "行动力", "理解力", "抗挫力", "环境力", "潜能力"]) assert.ok(process.includes(name));
   assert.doesNotMatch(process, /认知力|>韧性</);
   assert.ok((await read("public/llms.txt")).includes("29.90"));
+});
+
+test("首页沿用确认草图，图表如实标注示例并把费用详情留在报告页", async () => {
+  const html = await read("dist/index.html");
+  assert.match(html, /<h1 id="hero-title">看见学习力<\/h1>/);
+  for (const text of ["孩子怎么学，先一起看见。", "虚构示例", "不是能力百分比", "去微信小程序测评",
+    "驱动力", "行动力", "理解力", "抗挫力", "环境力", "潜能力"]) assert.ok(html.includes(text), text);
+  assert.match(html, /href="\/report\/">了解报告内容与费用/);
+  assert.doesNotMatch(html, /id="report-access"|为了.*搜索|百度和 AI 搜索/);
+  const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  for (const question of schemas.find((item) => item["@type"] === "FAQPage").mainEntity) {
+    assert.ok(html.includes(`<summary>${question.name}</summary>`));
+    assert.ok(html.includes(`<p>${question.acceptedAnswer.text}</p>`));
+  }
+  assert.match(html, /fetchpriority="high"/);
+  for (const asset of ["family-hero.webp", "family-hero-960.webp"]) {
+    assert.ok((await readFile(new URL(`public/images/${asset}`, root))).length < 100000);
+  }
 });
 
 test("售后 FAQ 的可见文本与结构化数据保持一致", async () => {

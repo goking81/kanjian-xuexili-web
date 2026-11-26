@@ -11,10 +11,11 @@ interface Props {
   canonicalPath?: string;
   noindex?: boolean;
   image?: string;
+  pageClass?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, canonicalPath = Astro.url.pathname, noindex = false, image = "/images/family-report.png", schema } = Astro.props;
+const { title, description, canonicalPath = Astro.url.pathname, noindex = false, image = "/images/family-report.png", pageClass = "", schema } = Astro.props;
 const canonical = new URL(canonicalPath, siteConfig.origin).toString();
 const socialImage = new URL(image, siteConfig.origin).toString();
 const currentPath = Astro.url.pathname;
@@ -27,7 +28,7 @@ const currentPath = Astro.url.pathname;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={noindex ? "noindex,follow" : "index,follow,max-image-preview:large"} />
-    <meta name="theme-color" content="#0d1728" />
+    <meta name="theme-color" content={pageClass === "home-landing" ? "#14563b" : "#0d1728"} />
     <link rel="canonical" href={canonical} />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:locale" content="zh_CN" />
@@ -40,7 +41,7 @@ const currentPath = Astro.url.pathname;
     <meta name="twitter:card" content="summary_large_image" />
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>
-  <body>
+  <body class={pageClass}>
     <a class="skip-link" href="#main-content">跳到正文</a>
     <Header currentPath={currentPath} />
     <main id="main-content"><slot /></main>
