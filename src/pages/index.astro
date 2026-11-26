@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ReportPreview from "../components/ReportPreview.astro";
 import { siteConfig } from "../config";
 import "../styles/home.css";
 
@@ -13,10 +14,17 @@ const dimensions = [
   { name: "环境力", child: 68, parent: 80 },
   { name: "潜能力", child: 90, parent: 74 },
 ];
+const situations = [
+  { label: "学习习惯", title: "孩子写作业总是拖延怎么办？", text: "先分清是不会做、难开始，还是任务太大不知道从哪里下手。", href: "/guides/homework-procrastination/" },
+  { label: "学习动力", title: "孩子学习动力不足，只能靠催吗？", text: "兴趣、目标感、成功体验和外部压力，可能正在产生不同影响。", href: "/guides/learning-motivation/" },
+  { label: "亲子沟通", title: "家长眼里的孩子，为什么和孩子自己不一样？", text: "同一个行为，家长看到的是磨蹭，孩子感受到的可能是无从开始。", href: "/guides/parent-child-gap/" },
+  { label: "学习方法", title: "学习力的六个维度分别在看什么？", text: "环境、任务结构和恢复方式，也会影响孩子如何学习。", href: "/how-it-works/" },
+];
 const benefits = [
-  { title: "看见学习方式", text: "从具体行为出发，了解孩子容易投入的任务，以及容易卡住的环节。" },
-  { title: "对照亲子观察", text: "把家长看到的表现与孩子的真实感受放在一起，不急着判断谁对谁错。" },
-  { title: "找到一个小行动", text: "回到最近的一次经历，和孩子一起选一个可以尝试的支持方式。" },
+  { title: "学习优势画像", text: "知道孩子在哪类任务里更容易主动、理解和进入状态。" },
+  { title: "行动卡点解释", text: "区分“不会做”“不愿做”和“不知道怎么开始”，减少无效催促。" },
+  { title: "亲子观察差异", text: "看到家长观察与孩子自我感受之间不一致的地方。" },
+  { title: "下一步支持建议", text: "把结论落到家庭可以尝试的小动作，不停留在抽象标签里。" },
 ];
 const steps = [
   { title: "家长先观察", text: "用 20 道题，回顾孩子在日常学习中的表现。先填昵称和年级，无需真实姓名。" },
@@ -54,7 +62,7 @@ const schema = [
         <p class="landing-lead">家长先观察，孩子再表达。<br />看见学习方式与亲子差异，找到下一步支持。</p>
         <div class="landing-actions">
           <button class="button button-primary js-open-mini" type="button">去微信小程序测评</button>
-          <a class="landing-text-link" href="/report/">先看报告样例 <span aria-hidden="true">→</span></a>
+          <a class="landing-text-link" href="#report">先看报告样例 <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -64,34 +72,48 @@ const schema = [
       <p>家长 <strong>20</strong> 题</p><p>孩子 <strong>40</strong> 题</p><p>六维学习观察</p><p>亲子视角对照</p>
     </div>
   </div>
+  <section class="landing-section landing-situations" id="situations" aria-labelledby="situations-title">
+    <div class="wrap">
+      <p class="landing-kicker">家长常见困惑</p>
+      <h2 id="situations-title">这些看起来像“态度问题”的表现，背后可能是不同的学习卡点</h2>
+      <p class="section-intro">从一个熟悉的场景开始，看看孩子可能卡在哪一步。</p>
+      <div class="problem-grid">
+        {situations.map(({ label, title, text, href }) => (
+          <a class="problem-link" href={href}><span>{label}</span><h3>{title}</h3><p>{text}</p></a>
+        ))}
+      </div>
+    </div>
+  </section>
   <section class="landing-section landing-report" id="report" aria-labelledby="report-title">
     <div class="wrap">
-      <p class="landing-kicker">看见具体的学习行为</p>
-      <h2 id="report-title">不是一个分数，<br class="mobile-break" />是一次更具体的理解</h2>
+      <p class="landing-kicker">报告样例</p>
+      <h2 id="report-title">报告不是给孩子打分，而是把“他为什么这样学”说得更具体</h2>
       <div class="landing-report-grid">
-        <figure class="landing-sample">
-          <figcaption><span class="sample-heading">报告样例</span><span class="sample-label">虚构示例</span></figcaption>
-          <div class="sample-legend"><span><i class="child-key"></i>孩子自评</span><span><i class="parent-key"></i>家长观察</span></div>
-          <dl class="sample-chart">
-            {dimensions.map(({ name, child, parent }) => (
-              <div class="sample-chart-row">
-                <dt>{name}</dt>
-                <dd>
-                  <span class="sample-bar-line"><span class="sample-track" aria-hidden="true"><span class="sample-bar child-bar" style={`width: ${child}%`}></span></span><span class="sample-value"><span class="visually-hidden">孩子自评 </span>{child}</span></span>
-                  <span class="sample-bar-line"><span class="sample-track" aria-hidden="true"><span class="sample-bar parent-bar" style={`width: ${parent}%`}></span></span><span class="sample-value"><span class="visually-hidden">家长观察 </span>{parent}</span></span>
-                </dd>
-              </div>
-            ))}
-          </dl>
-          <p class="sample-note">示例分数仅用于展示阅读方式，不是能力百分比、同龄人排名或真实用户结果。</p>
-        </figure>
+        <ReportPreview />
         <div class="landing-benefits">
+          <p class="landing-kicker">完成后，家长能得到</p>
           <ol>{benefits.map(({ title, text }, index) => (
             <li><span class="landing-benefit-number" aria-hidden="true">{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>
           ))}</ol>
           <a class="landing-text-link" href="/report/">了解报告内容与费用 <span aria-hidden="true">→</span></a>
         </div>
       </div>
+      <figure class="landing-sample">
+        <figcaption><span class="sample-heading">六维亲子对照</span><span class="sample-label">另一个虚构示例</span></figcaption>
+        <div class="sample-legend"><span><i class="child-key"></i>孩子自评</span><span><i class="parent-key"></i>家长观察</span></div>
+        <dl class="sample-chart">
+          {dimensions.map(({ name, child, parent }) => (
+            <div class="sample-chart-row">
+              <dt>{name}</dt>
+              <dd>
+                <span class="sample-bar-line"><span class="sample-track" aria-hidden="true"><span class="sample-bar child-bar" style={`width: ${child}%`}></span></span><span class="sample-value"><span class="visually-hidden">孩子自评 </span>{child}</span></span>
+                <span class="sample-bar-line"><span class="sample-track" aria-hidden="true"><span class="sample-bar parent-bar" style={`width: ${parent}%`}></span></span><span class="sample-value"><span class="visually-hidden">家长观察 </span>{parent}</span></span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <p class="sample-note">示例分数仅用于展示阅读方式，不是能力百分比、同龄人排名或真实用户结果。</p>
+      </figure>
     </div>
   </section>
   <section class="landing-section landing-process" id="method" aria-labelledby="process-title">

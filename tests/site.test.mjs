@@ -56,6 +56,19 @@ test("首页沿用确认草图，图表如实标注示例并把费用详情留�
   }
 });
 
+test("首页保留四个家长困惑入口、报告解读和六维对照", async () => {
+  const html = await read("dist/index.html");
+  const situations = html.match(/<section[^>]+id="situations"[^>]*>(.*?)<\/section>/s)[1];
+  assert.deepEqual([...situations.matchAll(/class="problem-link" href="([^"]+)"/g)].map(([, href]) => href), [
+    "/guides/homework-procrastination/", "/guides/learning-motivation/", "/guides/parent-child-gap/", "/how-it-works/",
+  ]);
+  const report = html.match(/<section[^>]+id="report"[^>]*>(.*?)<\/section>/s)[1];
+  for (const text of ["探索型", "你会读到的报告结论", "父母可能忽略的一面", "下一步支持建议", "六维亲子对照", "另一个虚构示例"]) {
+    assert.ok(report.includes(text), text);
+  }
+  assert.match(html, /href="#report">先看报告样例/);
+});
+
 test("售后 FAQ 的可见文本与结构化数据保持一致", async () => {
   const html = await read("dist/faq/index.html");
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);

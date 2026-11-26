@@ -32,7 +32,9 @@
 .landing-kicker { color: var(--landing-green); font-size: 14px; font-weight: 650; margin: 0 0 16px; }
 .landing-section h2 { font-size: 38px; font-weight: 750; letter-spacing: 0; line-height: 1.45; margin: 0; }
 .landing-report-grid { display: grid; grid-template-columns: 1.04fr 1fr; align-items: center; gap: 70px; margin-top: 48px; }
-.landing-sample { margin: 0; min-width: 0; }
+.landing-situations { background: #f3f6f4; }
+.landing-situations h2, .landing-report h2 { max-width: 850px; text-wrap: balance; }
+.landing-sample { border-top: 1px solid var(--landing-line); margin: 48px 0 0; max-width: 760px; padding-top: 36px; }
 .landing-sample figcaption { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
 .sample-heading { border-left: 4px solid var(--landing-green); padding-left: 14px; font-size: 20px; font-weight: 700; }
 .sample-label { font-size: 12px; color: var(--landing-muted); }
@@ -56,6 +58,7 @@
 .landing-benefit-number { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--landing-green); color: #fff; font-size: 18px; font-weight: 650; }
 .landing-benefits h3 { font-size: 23px; line-height: 1.45; margin: 0 0 8px; }
 .landing-benefits p { font-size: 15px; color: var(--landing-muted); line-height: 1.85; margin: 0; }
+.landing-benefits .landing-kicker { color: var(--landing-green); margin-bottom: 22px; }
 .landing-benefits > a { margin-top: 26px; margin-left: 53px; }
 .landing-process { background: #f3f6f4; }
 .landing-steps { list-style: none; padding: 0; margin: 46px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
@@ -88,7 +91,6 @@
 .home-landing .button-dark { background: var(--landing-green); color: #fff; }
 .home-landing .dialog-actions .button-outline { border-color: #57635b; }
 .visually-hidden { clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
-.mobile-break { display: none; }
 @media (prefers-reduced-motion: no-preference) {
   .landing-hero-copy { animation: landing-arrive 500ms ease-out both; }
   .landing-actions button { transition: transform 160ms ease, background-color 160ms ease; }
@@ -149,7 +151,6 @@
   .landing-photo { height: 300px; }
   .landing-photo img { object-position: right 45%; }
   .landing-section h2 { font-size: 27px; }
-  .mobile-break { display: block; }
   .landing-steps h3, .landing-benefits h3 { font-size: 21px; }
   .sample-chart-row { grid-template-columns: 58px minmax(0, 1fr); gap: 12px; }
   .sample-chart dt { font-size: 14px; }
