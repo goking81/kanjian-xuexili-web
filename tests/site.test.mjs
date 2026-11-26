@@ -63,10 +63,17 @@ test("首页保留四个家长困惑入口、报告解读和六维对照", async
     "/guides/homework-procrastination/", "/guides/learning-motivation/", "/guides/parent-child-gap/", "/how-it-works/",
   ]);
   const report = html.match(/<section[^>]+id="report"[^>]*>(.*?)<\/section>/s)[1];
-  for (const text of ["探索型", "你会读到的报告结论", "父母可能忽略的一面", "下一步支持建议", "六维亲子对照", "另一个虚构示例"]) {
+  for (const text of ["探索型", "你会读到的报告结论", "父母可能忽略的一面", "下一步支持建议"]) {
     assert.ok(report.includes(text), text);
   }
-  assert.match(html, /href="#report">先看报告样例/);
+  assert.doesNotMatch(report, /sample-chart/);
+  const overview = html.match(/<section[^>]+id="report-overview"[^>]*>(.*?)<\/section>/s)[1];
+  assert.equal([...overview.matchAll(/class="sample-chart-row"/g)].length, 6);
+  for (const text of ["看见学习方式", "对照亲子观察", "找到一个小行动", "虚构示例"]) {
+    assert.ok(overview.includes(text), text);
+  }
+  assert.match(html, /href="#report-overview">先看报告样例/);
+  assert.match(html, /class="landing-facts"[^]*id="report-overview"[^]*id="method"[^]*id="situations"/);
 });
 
 test("售后 FAQ 的可见文本与结构化数据保持一致", async () => {
